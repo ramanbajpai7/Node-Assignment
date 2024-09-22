@@ -34,7 +34,7 @@ wss.on("connection", (ws) => {
 mongoose;
 mongoose
   .connect(
-    "mongodb+srv://ramanbajpai9795:OQLgRHML6IBYB62x@cluster0.n5t3z.mongodb.net/taskmanager?retryWrites=true&w=majority&appName=Cluster0",
+    process.env.MONGODB_URL,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -42,7 +42,7 @@ mongoose
   )
   .then(() => {
     console.log("Connected to MongoDB");
-    server.listen(PORT, () => {
+    server.listen(process.env.PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
   })
